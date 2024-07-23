@@ -32,7 +32,7 @@ const schema: RJSFSchema = {
     "spreadsheet": {
       "type": "string",
       "title": "Select Spreadsheet",
-      "description": "Select Spreadsheet",
+      "description": "Select Spreadsheet to add row",
       "enum": ["Old", "Sheet 2", "New"]
     },
     "sheet": {
@@ -44,8 +44,8 @@ const schema: RJSFSchema = {
     "date": {
       "type": "string",
       "format": "date",
-      "title": "Select a Date",
-      "description": "Select a Date"
+      "title": "From",
+      "description": "Fetch new object after specified date and time."
     },
     "value": {
       "type": "integer",
@@ -92,7 +92,7 @@ const CustomRadioTemplate = (props) => {
               value="Single"
               checked={isChecked("Single")}
               onChange={(e) => props.onChange(e.target.value)}
-              className="w-6 h-6"
+              className={`w-6 h-6 cursor-pointer appearance-none border-2 border-gray-300 rounded-full checked:bg-blue-500`}
             />
             <span className="text-[1rem]">Single</span>
           </label>
@@ -103,7 +103,7 @@ const CustomRadioTemplate = (props) => {
               value="Multiple"
               checked={isChecked("Multiple")}
               onChange={(e) => props.onChange(e.target.value)}
-              className="w-6 h-6"
+              className={`w-6 h-6 cursor-pointer appearance-none border-2 border-gray-300 rounded-full checked:bg-blue-500`}
             />
             <span className="text-[1rem]">Multiple</span>
           </label>
@@ -116,6 +116,7 @@ const CustomRadioTemplate = (props) => {
   );
 };
 
+
 const CustomFieldTemplate = (props) => {
   console.log("props", props);
   return (
@@ -124,7 +125,7 @@ const CustomFieldTemplate = (props) => {
         {  props.required ?  props.label+"*" : props.label }
       </div>
       <div className="my-[5px] w-[100%]">
-        <div className="border border-solid  border-[#CFD4DE] flex rounded-[4px] pb-[4px] w-[97%]">
+        <div className="border border-solid  border-[#CFD4DE] flex rounded-[4px] pb-[4px] w-[97%] focus-within:outline focus-within:outline-2 focus-within:outline-indigo-500">
           <div className="w-[8%] flex flex-row items-center justify-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -166,7 +167,7 @@ const CustomSelectFieldTemplate = (props) => {
         {props.required ? props.label + "*" : props.label}
       </div>
       <div className="my-[5px] w-[100%]">
-        <div className="border border-solid border-[#CFD4DE] flex rounded-[4px] pb-[4px] w-[97%]">
+        <div className="border border-solid border-[#CFD4DE] flex rounded-[4px] w-[97%] focus-within:outline focus-within:outline-2 focus-within:outline-indigo-500">
           <div className="w-[100%] ml-[4%]">
             <select
               className="w-[100%] focus:outline-none text-lg text-[#475467] h-[36px]"
@@ -324,6 +325,7 @@ const uiSchema: UiSchema = {
     "ui:FieldTemplate": CustomIntTemplate
   },
   "record": {
+    "ui:widget": "radio",
     "ui:FieldTemplate": CustomRadioTemplate
   },
   "metadata": {
