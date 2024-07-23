@@ -33,7 +33,7 @@ const schema: RJSFSchema = {
       "type": "string",
       "title": "Select Spreadsheet",
       "description": "Select Spreadsheet",
-      "enum": ["Spreadsheet1", "Spreadsheet2", "Spreadsheet3"]
+      "enum": ["Old", "Sheet 2", "New"]
     },
     "sheet": {
       "type": "string",
@@ -147,7 +147,7 @@ const CustomFieldTemplate = (props) => {
           <div className="w-[89%]">
             <input
               type="text"
-              className="w-[100%] focus:outline-none text-[.75rem] h-[36px]" />
+              className="w-[100%] focus:outline-none text-lg text-[#475467] h-[36px]" />
           </div>
         </div>
         <div className="text-[.75rem] text-[#475467] font-light mt-[7px] w-[92%]">
@@ -169,7 +169,7 @@ const CustomSelectFieldTemplate = (props) => {
         <div className="border border-solid border-[#CFD4DE] flex rounded-[4px] pb-[4px] w-[97%]">
           <div className="w-[100%] ml-[4%]">
             <select
-              className="w-[100%] focus:outline-none text-[.75rem] h-[36px]"
+              className="w-[100%] focus:outline-none text-lg text-[#475467] h-[36px]"
               value={props.value}
               onChange={(e) => props.onChange(e.target.value)}
             >
